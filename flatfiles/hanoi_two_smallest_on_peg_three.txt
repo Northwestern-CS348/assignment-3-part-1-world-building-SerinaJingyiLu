@@ -26,13 +26,20 @@ fact: (on disk3 peg1)
 fact: (on disk4 peg1)
 fact: (on disk5 peg1)
 
-fact: (movable disk1 peg3 peg2)
-fact: (movable disk1 peg3 peg1)
-fact: (movable disk3 peg1 peg2)
-
-fact: (ontopof disk3 disk4)
-fact: (ontopof disk4 disk5)
-fact: (ontopof disk1 disk2)
 
 
-rule: ((ontopof ?x ?y) (ontopof ?y ?z)) -> (ontopof ?x ?z)
+fact: (larger disk2 disk1)
+fact: (larger disk3 disk2)
+fact: (larger disk4 disk3)
+fact: (larger disk5 disk4)
+
+fact: (empty peg2)
+
+
+rule: ((larger ?x ?y) (larger ?y ?z)) -> (larger ?x ?z)
+rule: ((on disk1 ?x) (empty ?y)) -> (movable disk1 ?x ?y)
+rule: ((on disk3 ?x) (empty ?y)) -> (movable disk3 ?x ?y)
+rule: ((movable disk1 ?x ?y) (movable disk3 ?z ?y)(larger disk3 disk1)) -> (movable disk1 ?x ?z)
+
+
+

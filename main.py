@@ -161,11 +161,15 @@ class KBTest(unittest.TestCase):
             'fact: (movable tile4 pos3 pos2 pos2 pos2)',
         ]
         self.checkMovables(th, expectedMovables)
+    
+    
+    
 
     def test10(self):
         p8 = Puzzle8Game()
         p8.read('puzzle8_center_empty.txt')
         required = []
+        
         forbidden = [
             'fact: (movable tile1 pos1 pos1 pos2 pos2)',
             'fact: (movable tile3 pos3 pos1 pos2 pos2)',
